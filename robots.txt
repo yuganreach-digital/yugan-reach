@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yuganreach.in/sitemap.xml
+
+# Block access to any future admin or build artefacts
+Disallow: /admin/
+Disallow: /.netlify/
