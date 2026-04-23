@@ -1,9 +1,10 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap — listed on both domains so each crawler finds it
 Sitemap: https://yuganreach.in/sitemap.xml
+Sitemap: https://yuganreach.com/sitemap.xml
 
-# Block access to any future admin or build artefacts
+# Block access to build artefacts and internal paths
 Disallow: /admin/
 Disallow: /.netlify/
