@@ -777,6 +777,9 @@ a,button,[role="button"]{
   animation:core-pulse 2s ease-in-out infinite;
 }
 
+/* mobile-only platform badges — hidden by default, shown in mobile MQ */
+.globe-pills-mobile{display:none}
+
 /* ── SERVICES 3-COLUMN ── */
 .svc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
 .svc-col{padding:0}
@@ -1112,58 +1115,70 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
   .hero-meta-num{font-size:1.3rem}
   .hero-meta-label{font-size:0.65rem}
 
-  /* ── GLOBE WIDGET: stack mode ── */
+  /* ── GLOBE WIDGET: mobile layout ── */
   .hero-right{width:100%}
   .globe-stage{
     height:auto;
     flex-direction:column;
-    gap:1.5rem;
-    padding:1rem 0 1.25rem;
+    align-items:center;
+    gap:0;
+    padding:0;
+    overflow:visible;
   }
   .globe-wrap{
-    width:170px;
-    height:170px;
+    width:160px;
+    height:160px;
+    flex-shrink:0;
   }
-  .globe-glow{inset:-30px}
+  .globe-glow{inset:-20px}
   .globe-atmos{inset:-4px}
-  .globe-core-label{margin-top:0.7rem;font-size:0.66rem}
-  /* satellites collapse from orbit → 2-col grid */
-  .sats{
-    position:relative;
-    top:auto;left:auto;
-    width:100%;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0.6rem;
-    margin-top:0.5rem;
-  }
-  .sat{
-    position:relative;
-    top:auto;left:auto;
-    transform:none;
-    justify-content:flex-start;
-    width:100%;
-    box-sizing:border-box;
-    padding:0.55rem 0.85rem 0.55rem 0.5rem;
-  }
-  .sat.is-active{
-    border-color:var(--green);
-    background:var(--green-pale);
-  }
+  .globe-stars{inset:-40px}
+  .globe-core-label{margin-top:0.6rem;font-size:0.62rem}
+  /* hide orbital sats — replaced by pill row below */
+  .sats{display:none}
+  /* globe-meta sits naturally below globe */
   .globe-meta{
     position:relative;
     bottom:auto;
     left:auto;
     transform:none;
-    margin-top:0.25rem;
+    margin-top:1rem;
     white-space:normal;
     text-align:center;
     line-height:1.4;
-    max-width:280px;
+    font-size:0.68rem;
+    max-width:100%;
+    width:100%;
+    box-sizing:border-box;
+    justify-content:center;
   }
+  /* platform pills: horizontal wrap of compact badges */
+  .globe-pills-mobile{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.4rem;
+    justify-content:center;
+    margin-top:0.85rem;
+    width:100%;
+  }
+  .globe-pill-m{
+    display:flex;
+    align-items:center;
+    gap:0.35rem;
+    padding:0.3rem 0.6rem 0.3rem 0.35rem;
+    background:var(--bg-card);
+    border:1.5px solid var(--border);
+    border-radius:100px;
+    font-size:0.7rem;
+    font-weight:500;
+    font-family:var(--font-body);
+    color:var(--text);
+    white-space:nowrap;
+  }
+  .globe-pill-m .sat-icon{width:18px;height:18px;font-size:0.55rem}
 
-  /* ── stat strip: 3-col grid ── */
-  .stat-strip{flex-direction:row}
+  /* ── stat strip: hide on mobile (hero-meta already covers same data) ── */
+  .stat-strip{display:none}
   .stat-item{padding:1.25rem 0.5rem}
   .stat-num{font-size:1.9rem}
   .stat-label{font-size:0.65rem}
@@ -1418,6 +1433,15 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           <div class="globe-meta">
             <span class="globe-meta-dot"></span>
             Your business, visible across the entire internet
+          </div>
+          <!-- mobile-only compact platform badges -->
+          <div class="globe-pills-mobile">
+            <div class="globe-pill-m"><span class="sat-icon g">G</span>Google</div>
+            <div class="globe-pill-m"><span class="sat-icon ai">AI</span>ChatGPT</div>
+            <div class="globe-pill-m"><span class="sat-icon gai">G</span>AI Mode</div>
+            <div class="globe-pill-m"><span class="sat-icon ig">IG</span>Instagram</div>
+            <div class="globe-pill-m"><span class="sat-icon mp">M</span>Maps</div>
+            <div class="globe-pill-m"><span class="sat-icon px">P</span>Perplexity</div>
           </div>
         </div>
       </div><!-- /hero-right -->
