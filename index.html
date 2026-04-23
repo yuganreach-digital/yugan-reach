@@ -62,7 +62,7 @@
   "mainEntity": [
     {"@type":"Question","name":"How is Yugan Reach different from using a template builder or DIY platform?","acceptedAnswer":{"@type":"Answer","text":"Template builders make it easy to put something online. We make it effective. Every design decision is driven by your market, your customers, and your positioning — not a platform's default components. The result converts visitors, ranks on Google, and genuinely reflects your brand."}},
     {"@type":"Question","name":"How long does a website project take?","acceptedAnswer":{"@type":"Answer","text":"Most Digital Launch (₹69K) projects go live within 3–5 working days after the discovery call. Market Authority (₹99K) typically takes 7–12 working days depending on scope."}},
-    {"@type":"Question","name":"What is included in the ₹69K Digital Launch plan?","acceptedAnswer":{"@type":"Answer","text":"A fully custom-designed website (up to 4 pages — homepage, about, services, and contact), responsive across all devices, on-page SEO, contact form, Google Analytics setup, and two rounds of revisions. Domain and hosting are billed separately at cost."}},
+    {"@type":"Question","name":"What is included in the ₹69K Digital Launch plan?","acceptedAnswer":{"@type":"Answer","text":"A fully custom-designed website (up to 4 pages: homepage, about, services, and contact), responsive across all devices, on-page SEO, contact form, Google Analytics setup, and two rounds of revisions. Domain and hosting are billed separately at cost."}},
     {"@type":"Question","name":"What is LLM SEO and why does it matter?","acceptedAnswer":{"@type":"Answer","text":"LLM SEO optimises your content and brand signals so AI assistants like ChatGPT, Perplexity, and Google AI Overviews recommend your business. It is the next frontier of discoverability, included in the Market Authority plan."}},
     {"@type":"Question","name":"Do you work with businesses outside India?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our team has worked across India, Canada, the United States, and Australia. We understand how brands land differently across markets and design accordingly."}},
     {"@type":"Question","name":"Can I add e-commerce to my website?","acceptedAnswer":{"@type":"Answer","text":"Yes — e-commerce, portals, and custom management systems are scoped as separate engagements priced to your specific requirements. Talk to us for a clear scope and quote."}}
@@ -76,6 +76,9 @@
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+/* Offset anchor targets so they clear the fixed nav (70px) with a little breathing room */
+section[id],div[id]{scroll-margin-top:80px}
 :root{
   --bg:#F7F5F0;
   --bg-card:#FFFFFF;
@@ -107,7 +110,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .container{max-width:1160px;margin:0 auto;padding:0 2rem}
-.section{padding:6rem 0;position:relative}
+.section{padding:6rem 0;position:relative;transition:background 0.4s ease}
 
 /* ── TYPOGRAPHY ── */
 .display-xl{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-0.02em}
@@ -121,26 +124,113 @@ em.g-em{font-style:italic;color:var(--green)}
 em.o-em{font-style:italic;color:var(--orange)}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,0.9);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1160px;margin:0 auto}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(247,245,240,0.6);
+  backdrop-filter:blur(24px) saturate(200%) brightness(1.05);
+  -webkit-backdrop-filter:blur(24px) saturate(200%) brightness(1.05);
+  border-bottom:1px solid rgba(74,144,104,0.12);
+  box-shadow:0 1px 32px rgba(30,30,20,0.06), inset 0 -1px 0 rgba(255,255,255,0.4);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2rem;max-width:1160px;margin:0 auto}
 .nav-logo{display:flex;align-items:center;gap:0.625rem}
 .nav-logo-icon{width:36px;height:36px;border-radius:9px;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1rem;color:#fff;flex-shrink:0}
 .nav-logo-wrap{display:flex;flex-direction:column}
 .nav-logo-text{font-family:var(--font-display);font-size:1.15rem;color:var(--text);line-height:1.05}
 .nav-logo-tagline{font-family:var(--font-mono);font-size:0.58rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-top:2px}
-.nav-links{display:flex;align-items:center;gap:1.75rem}
-.nav-links a{font-size:0.875rem;font-weight:600;color:var(--text-sub);transition:color 0.2s}
-.nav-links a:hover{color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:1.35rem}
+.nav-links a{font-size:0.82rem;font-weight:600;color:var(--text-sub);transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--green)}
+
+/* ── TOUCH TARGETS & TAP FEEDBACK ── */
+a,button,[role="button"]{
+  -webkit-tap-highlight-color:rgba(74,144,104,0.1);
+  touch-action:manipulation;
+}
+/* min 44px touch target on mobile (iOS HIG standard) */
+.nav-links a,.faq-btn,.dw-tab,.dw-dot-nav{min-height:44px}
 
 /* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.85rem 1.65rem;border-radius:10px;font-family:var(--font-body);font-size:0.925rem;font-weight:600;cursor:pointer;border:none;transition:all 0.22s;white-space:nowrap;text-decoration:none}
-.btn-primary{background:var(--green);color:#fff;box-shadow:0 2px 12px rgba(74,144,104,0.28)}
-.btn-primary:hover{background:#3d7d5a;transform:translateY(-1px);box-shadow:0 6px 24px rgba(74,144,104,0.36)}
+.btn{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  padding:0.875rem 1.7rem;
+  border-radius:10px;
+  font-family:var(--font-body);font-size:0.925rem;font-weight:600;
+  cursor:pointer;border:none;
+  transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
+             box-shadow 0.22s ease,
+             background 0.22s ease;
+  white-space:nowrap;text-decoration:none;
+  min-height:44px;
+  position:relative;overflow:hidden;
+}
+/* press feedback */
+.btn:active{transform:scale(0.96) !important;transition-duration:0.1s}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 2px 14px rgba(74,144,104,0.3)}
+.btn-primary:hover{background:#3d7d5a;transform:translateY(-2px);box-shadow:0 8px 28px rgba(74,144,104,0.4)}
+/* breathing glow on hero + cta primary buttons */
+.hero .btn-primary,.cta-inner .btn-primary{animation:btn-breathe 3.5s ease-in-out infinite}
+@keyframes btn-breathe{
+  0%,100%{box-shadow:0 2px 14px rgba(74,144,104,0.3)}
+  50%{box-shadow:0 4px 24px rgba(74,144,104,0.55),0 0 0 5px rgba(74,144,104,0.08)}
+}
 .btn-secondary{background:var(--bg-card);border:1.5px solid var(--border-strong);color:var(--text)}
-.btn-secondary:hover{background:var(--bg-alt);transform:translateY(-1px)}
+.btn-secondary:hover{background:var(--bg-alt);transform:translateY(-2px);border-color:var(--green);color:var(--green)}
 .btn-orange{background:var(--orange);color:#fff;box-shadow:0 2px 12px rgba(212,114,74,0.25)}
-.btn-orange:hover{background:#b85e3a;transform:translateY(-1px);box-shadow:0 6px 24px rgba(212,114,74,0.35)}
+.btn-orange:hover{background:#b85e3a;transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,114,74,0.4)}
 .btn-group{display:flex;gap:0.85rem;align-items:center;flex-wrap:wrap}
+
+/* ── NAV LINK UNDERLINE SLIDE ── */
+.nav-links a{position:relative;padding:0.35rem 0.2rem}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-1px;left:0;
+  width:0;height:1.5px;background:var(--green);
+  transition:width 0.25s cubic-bezier(0.4,0,0.2,1);
+  border-radius:2px;
+}
+.nav-links a:hover::after{width:100%}
+
+/* ── MICRO: SERVICE ROWS ── */
+.svc-row-title{transition:transform 0.25s cubic-bezier(0.4,0,0.2,1),color 0.22s}
+.svc-row:hover .svc-row-title{transform:translateX(5px)}
+
+/* ── MICRO: PRICING CARD ── */
+.price-card{transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s ease}
+.price-card:hover{transform:translateY(-6px)}
+
+/* ── MICRO: FORM INPUTS ── */
+.yr-form input,.yr-form textarea,.yr-form select{
+  transition:border-color 0.2s ease,box-shadow 0.2s ease,transform 0.15s ease;
+}
+.yr-form input:focus,.yr-form textarea:focus,.yr-form select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(74,144,104,0.12);
+  transform:translateY(-1px);
+  outline:none;
+}
+
+/* ── MICRO: FAQ ── */
+.faq-btn{transition:color 0.2s ease,padding-left 0.2s ease}
+.faq-item.open .faq-btn{color:var(--green);padding-left:0.35rem}
+
+/* ── MICRO: STAT NUMBERS ── */
+.stat-num{transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
+.stat-item:hover .stat-num{transform:scale(1.06)}
+
+/* ── MICRO: NAV LOGO ── */
+.nav-logo-icon{transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+.nav-logo:hover .nav-logo-icon{transform:rotate(-6deg) scale(1.08)}
+
+/* ── MICRO: BEYOND TAG ── */
+.beyond-tag{transition:transform 0.2s ease,background 0.2s ease}
+.beyond-tag:hover{transform:translateY(-2px);background:rgba(74,144,104,0.15)}
+
+/* ── STAGGERED REVEAL ── */
+.reveal:nth-child(2){transition-delay:80ms}
+.reveal:nth-child(3){transition-delay:160ms}
+.reveal:nth-child(4){transition-delay:240ms}
+.reveal:nth-child(5){transition-delay:320ms}
+.reveal:nth-child(6){transition-delay:380ms}
 
 /* ── BADGE ── */
 .badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.38rem 0.9rem;border-radius:100px;border:1.5px solid rgba(74,144,104,0.3);background:var(--green-pale);font-size:0.72rem;font-weight:600;font-family:var(--font-mono);color:var(--green);letter-spacing:0.06em}
@@ -644,7 +734,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
 .footer-bottom a{color:var(--green)}
 
 /* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1),transform 0.75s cubic-bezier(0.22,1,0.36,1)}
 .reveal.in{opacity:1;transform:translateY(0)}
 
 /* ── TOAST ── */
@@ -665,14 +755,14 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
 
 /* ── RESPONSIVE ── */
 @media (max-width:1000px){
-  .hero-2col{grid-template-columns:1fr;gap:3.5rem}
+  .hero-2col{grid-template-columns:1fr;gap:3rem}
   .hero-left{max-width:100%}
   .hero-sub{max-width:100%}
-  .dw-outer{max-width:520px;margin:0 auto}
+  .dw-outer{max-width:540px;margin:0 auto}
 }
 @media (max-width:960px){
   .pricing-grid{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto}
-  .how-grid{grid-template-columns:repeat(2,1fr)}
+  .how-grid{grid-template-columns:repeat(2,1fr);gap:2rem}
   .how-grid::before{display:none}
   .contact-wrap{grid-template-columns:1fr;gap:2.5rem}
   .contact-left{position:static}
@@ -696,61 +786,179 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
   .tpl-contrast-inner{grid-template-columns:1fr}
   .tpl-col-bad{border-right:none;border-bottom:1.5px solid var(--border)}
 }
+/* ── CAROUSEL DOTS (mobile only, hidden on desktop) ── */
+.dw-dots{display:none;justify-content:center;align-items:center;gap:6px;padding:0.75rem 1rem;border-top:1px solid var(--border)}
+.dw-dot-nav{width:8px;height:8px;border-radius:50%;background:var(--border-strong);border:none;padding:0;cursor:pointer;transition:all 0.25s;flex-shrink:0}
+.dw-dot-nav.active{width:22px;border-radius:4px;background:var(--green)}
+
 @media (max-width:640px){
-  /* layout */
-  .section{padding:4rem 0}
-  .container{padding:0 1.25rem}
-  /* hero mobile */
-  .hero{padding:2.5rem 0 3rem;min-height:auto}
+  /* ── global layout ── */
+  .section{padding:3.5rem 0}
+  .container{padding:0 1.1rem}
+
+  /* ── HERO: full rewrite ── */
+  .hero{min-height:auto;padding:5.5rem 0 2.5rem;overflow:hidden}
+  .hero-2col{
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+  }
+  .hero-left{
+    max-width:100%;
+    width:100%;
+  }
   .hero-eyebrow{margin-bottom:1rem}
-  .display-xl.hero-headline{font-size:clamp(2.6rem,11vw,4rem);line-height:1.08}
-  .hero-sub{font-size:0.93rem;margin-top:1rem}
-  .btn-group{flex-direction:column;gap:0.65rem;margin-top:1.5rem}
-  .btn-group .btn{text-align:center;justify-content:center;width:100%}
-  .hero-meta{flex-wrap:wrap;gap:0.85rem;margin-top:1.5rem;padding-top:1.25rem}
-  .hero-meta-item{flex:1;min-width:80px}
-  .hero-meta-num{font-size:1.4rem}
-  /* discovery widget mobile */
-  .dw-outer{max-width:100%;padding:1.25rem}
-  .dw-card{min-height:auto}
-  .dw-tabs{gap:0.2rem}
-  .dw-tab{padding:0.4rem 0.55rem;font-size:0.68rem}
-  .dw-panel{min-height:180px}
-  /* stat strip mobile: stack 1-col */
-  .stat-strip{flex-direction:column}
-  .stat-item:not(:last-child)::after{content:'';position:absolute;bottom:0;left:10%;right:10%;top:auto;height:1px;width:auto}
-  .stat-item{padding:1.5rem 1.25rem;border-bottom:1px solid var(--border)}
-  .stat-item:last-child{border-bottom:none}
-  .stat-num{font-size:2.25rem}
-  /* services mobile: 2-col num+content */
-  .svc-row{grid-template-columns:2.25rem 1fr;gap:0.85rem;padding:1.5rem 0}
-  .svc-row::before{left:-1.25rem}
-  .svc-row-title{font-size:1.2rem}
+  .display-xl.hero-headline{
+    font-size:clamp(2.8rem,12vw,4.2rem);
+    line-height:1.06;
+    margin-bottom:1rem;
+  }
+  .hero-sub{
+    font-size:0.9rem;
+    line-height:1.7;
+    margin-bottom:0;
+    max-width:100%;
+  }
+  /* buttons: full-width stack */
+  .btn-group{
+    display:flex;
+    flex-direction:column;
+    gap:0.6rem;
+    margin-top:1.5rem;
+    width:100%;
+  }
+  .btn-group .btn{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+    white-space:normal;
+    box-sizing:border-box;
+  }
+  /* meta strip: 3 across */
+  .hero-meta{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    margin-top:1.5rem;
+    padding-top:1.25rem;
+    border-top:1px solid var(--border);
+  }
+  .hero-meta-item{
+    text-align:center;
+    padding:0.5rem 0;
+    position:relative;
+  }
+  .hero-meta-item:not(:last-child)::after{
+    content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:var(--border);
+  }
+  .hero-meta-num{font-size:1.3rem}
+  .hero-meta-label{font-size:0.65rem}
+
+  /* ── DISCOVERY WIDGET: carousel mode ── */
+  .hero-right{width:100%}
+  .dw-outer{padding:0;width:100%}
+  .dw-outer::before{display:none}
+  .dw-card{border-radius:16px;width:100%;box-sizing:border-box}
+  /* HIDE tabs — replaced by dots */
+  .dw-tabs{display:none}
+  /* SHOW dots */
+  .dw-dots{display:flex}
+  /* panels: fixed height, no overflow */
+  .dw-panels{padding:1rem;min-height:200px;overflow:hidden}
+  .dw-panel{position:absolute;inset:1rem;opacity:0;pointer-events:none;transition:opacity 0.35s ease,transform 0.35s ease;transform:translateX(24px)}
+  .dw-panel.active{opacity:1;pointer-events:auto;transform:translateX(0);position:relative;inset:auto}
+  /* searchbar fits */
+  .dw-searchbar{font-size:0.75rem;padding:0.45rem 0.7rem}
+  /* hide chrome URL bar on small screens */
+  .dw-chrome-url{display:none}
+
+  /* ── stat strip: 3-col grid ── */
+  .stat-strip{flex-direction:row}
+  .stat-item{padding:1.25rem 0.5rem}
+  .stat-num{font-size:1.9rem}
+  .stat-label{font-size:0.65rem}
+
+  /* ── services ── */
+  .svc-row{grid-template-columns:2rem 1fr;gap:0.75rem;padding:1.25rem 0}
+  .svc-row::before{left:-1.1rem}
+  .svc-row-title{font-size:1.1rem}
   .svc-row-tag{display:none}
-  /* how it works mobile: stack vertically */
-  .how-grid{grid-template-columns:1fr}
-  .how-grid::before{display:none}
-  .how-step{text-align:left;display:grid;grid-template-columns:56px 1fr;gap:1rem;align-items:start}
-  .how-num{margin:0 0 0 0}
-  .how-title{margin-top:0.25rem}
-  /* forms */
-  .yr-form .form-row-2{grid-template-columns:1fr}
-  /* footer */
-  .footer-grid{grid-template-columns:1fr}
-  /* cta */
-  .cta-box{padding:3rem 1.5rem}
-  /* why masonry */
-  .why-masonry{grid-template-columns:1fr;gap:2rem}
-  /* pricing: single col */
-  .pricing-grid{max-width:100%}
-  /* why templates */
+
+  /* ── how it works: vertical timeline ── */
+  .how-grid{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin-top:2.5rem;
+    position:relative;
+  }
+  /* vertical green-to-orange connector line */
+  .how-grid::before{
+    display:block;
+    content:'';
+    position:absolute;
+    left:27px;
+    top:28px;
+    bottom:28px;
+    width:2px;
+    background:linear-gradient(180deg,var(--green),var(--orange));
+    z-index:0;
+  }
+  .how-step{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    grid-template-rows:auto auto;
+    column-gap:1.1rem;
+    row-gap:0.25rem;
+    padding-bottom:2.5rem;
+    text-align:left;
+    position:relative;
+    z-index:1;
+  }
+  .how-step:last-child{padding-bottom:0}
+  /* circle: spans both rows, sits on the line */
+  .how-num{
+    grid-column:1;
+    grid-row:1 / 3;
+    margin:0;
+    align-self:start;
+    position:relative;
+    z-index:2;
+    background:var(--bg-card);
+  }
+  /* title: col 2 row 1 */
+  .how-title{
+    grid-column:2;
+    grid-row:1;
+    margin-top:0.9rem;
+  }
+  /* body: col 2 row 2 */
+  .how-body{
+    grid-column:2;
+    grid-row:2;
+  }
+
+  /* ── why templates ── */
   .tpl-row{padding:1.25rem 0}
   .tpl-row:hover{margin:0;padding-left:0;padding-right:0;border-radius:0;border-color:var(--border)}
-  .tpl-title{font-size:1.05rem}
+  .tpl-title{font-size:1rem}
   .tpl-contrast-inner{border-radius:14px}
   .tpl-contrast-col{padding:1.25rem}
-  /* faq */
-  .faq-btn{font-size:0.97rem;padding:1.25rem 0}
+
+  /* ── FAQ ── */
+  .faq-btn{font-size:0.95rem;padding:1.1rem 0}
+
+  /* ── forms ── */
+  .yr-form .form-row-2{grid-template-columns:1fr}
+
+  /* ── footer ── */
+  .footer-grid{grid-template-columns:1fr}
+
+  /* ── misc ── */
+  .cta-box{padding:2.5rem 1.25rem}
+  .why-masonry{grid-template-columns:1fr;gap:2rem}
+  .pricing-grid{max-width:100%}
+  .display-lg{font-size:clamp(1.6rem,7vw,2.4rem)}
 }
 </style>
 </head>
@@ -770,7 +978,9 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
       <a href="#approach">Approach</a>
       <a href="#team">Who We Are</a>
       <a href="#services">Services</a>
+      <a href="#process">How We Work</a>
       <a href="#pricing">Pricing</a>
+      <a href="#why">Why Us</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </div>
@@ -799,7 +1009,9 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
     <a href="#approach" onclick="closeMobileNav()">Approach</a>
     <a href="#team" onclick="closeMobileNav()">Who We Are</a>
     <a href="#services" onclick="closeMobileNav()">Services</a>
+    <a href="#process" onclick="closeMobileNav()">How We Work</a>
     <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+    <a href="#why" onclick="closeMobileNav()">Why Us</a>
     <a href="#faq" onclick="closeMobileNav()">FAQ</a>
     <a href="#contact" onclick="closeMobileNav()">Contact</a>
   </nav>
@@ -832,7 +1044,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           first.
         </h1>
         <p class="hero-sub">
-          We don't start with a pre-built blueprint. We start with your business — your market, your customers, your ambitions. Then we build your entire online presence around them, end-to-end.
+          We don't start with a pre-built blueprint. We start with your business: your market, your customers, your ambitions. Then we build your entire online presence around them, end-to-end.
         </p>
         <div class="btn-group">
           <a href="#contact" class="btn btn-primary">Start your project →</a>
@@ -900,7 +1112,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
                       <div class="gp-url">yuganreach.in › services</div>
                     </div>
                   </div>
-                  <div class="gp-snippet">End-to-end digital launch for businesses. From ₹69K — custom design, deployment, SEO, LLM SEO, and digital marketing built around your brand...</div>
+                  <div class="gp-snippet">End-to-end digital launch for businesses. From ₹69K: custom design, deployment, SEO, LLM SEO, and digital marketing built around your brand...</div>
                   <div class="gp-stars">
                     <span class="gp-star-row">
                       <svg width="11" height="11" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -928,7 +1140,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
                   AI-generated answer
                 </div>
                 <div class="ap-bubble">
-                  For businesses in India looking to establish a strong online presence, <strong>Yugan Reach Digital Solutions</strong> comes highly recommended. They offer end-to-end services including website design, SEO, and are one of the few agencies providing <strong>LLM SEO</strong> — optimising your content to appear in AI-powered search results like this one.<span class="ap-cursor"></span>
+                  For businesses in India looking to establish a strong online presence, <strong>Yugan Reach Digital Solutions</strong> comes highly recommended. They offer end-to-end services including website design, SEO, and are one of the few agencies providing <strong>LLM SEO</strong>, optimising your content to appear in AI-powered search results like this one.<span class="ap-cursor"></span>
                 </div>
                 <div class="ap-sources">
                   <span class="ap-source">yuganreach.in</span>
@@ -964,9 +1176,16 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
 
             </div><!-- /dw-panels -->
 
-            <!-- progress bar -->
+            <!-- progress bar (desktop) -->
             <div class="dw-progress">
               <div class="dw-progress-bar" id="dw-prog"></div>
+            </div>
+
+            <!-- mobile carousel dots -->
+            <div class="dw-dots" id="dw-dots">
+              <button class="dw-dot-nav active" data-dot="0" aria-label="Google Search"></button>
+              <button class="dw-dot-nav" data-dot="1" aria-label="AI Search"></button>
+              <button class="dw-dot-nav" data-dot="2" aria-label="Social"></button>
             </div>
 
           </div><!-- /dw-card -->
@@ -1007,97 +1226,26 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
         No two <em class="g-em">digital presences</em> should be either.
       </blockquote>
       <p class="manifesto-sub">
-        Before we design a single screen or write a single line of copy, we understand your market, your customers, and exactly where you want to position your business. What you get is built exclusively for you — your colours, your voice, your priorities. Not someone else's design with your name dropped in.
+        Before we design a single screen or write a single line of copy, we understand your market, your customers, and exactly where you want to position your business. What you get is built exclusively for you: your colours, your voice, your priorities. Not someone else's design with your name dropped in.
       </p>
     </div>
 
     <div class="pillars-grid">
       <div class="pillar reveal">
-        <span class="pillar-num">01 — Discovery</span>
+        <span class="pillar-num">01 · Discovery</span>
         <div class="pillar-title">Understand before we design</div>
-        <p class="pillar-body">Who are your competitors? What does your ideal customer look like? Where do you want to be in three years? We ask the hard questions first — and the answers shape everything we build.</p>
+        <p class="pillar-body">Who are your competitors? What does your ideal customer look like? Where do you want to be in three years? We ask the hard questions first. The answers shape everything we build.</p>
       </div>
       <div class="pillar reveal">
-        <span class="pillar-num">02 — Craft</span>
+        <span class="pillar-num">02 · Craft</span>
         <div class="pillar-title">Your brand. Your choices.</div>
-        <p class="pillar-body">Colours, typography, tone of voice, market positioning — these aren't defaults we hand you. They're decisions we make together, rooted in how you want to be perceived by the customers you're trying to reach.</p>
+        <p class="pillar-body">Colours, typography, tone of voice, market positioning: these aren't defaults we hand you. They're decisions we make together, rooted in how you want to be perceived by the customers you're trying to reach.</p>
       </div>
       <div class="pillar reveal">
-        <span class="pillar-num">03 — Launch</span>
+        <span class="pillar-num">03 · Launch</span>
         <div class="pillar-title">End-to-end. Online. Live.</div>
-        <p class="pillar-body">New business or established company going digital — we handle the complete online launch. Website, SEO, social presence, analytics, digital marketing — all coordinated, all working as one.</p>
+        <p class="pillar-body">New business or established company going digital? We handle the complete online launch. Website, SEO, social presence, analytics, digital marketing: all coordinated, all working as one.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ WHO WE ARE ══ -->
-<section class="section" id="team" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="container">
-    <div class="who-grid">
-
-      <!-- Left: the claim -->
-      <div class="reveal">
-        <div class="label" style="margin-bottom:1rem">Who we are</div>
-        <h2 class="display-lg">
-          We've built inside<br/>
-          Fortune 50 companies.<br/>
-          <em class="g-em">Now we build for yours.</em>
-        </h2>
-        <p class="body-lg" style="margin-top:1.5rem">
-          Our team carries over a decade of hands-on experience in software product design, technology, and market positioning — earned inside and alongside some of the world's most demanding organisations. Apple. Google. American Airlines. Fortune 50 financial institutions. Global audit and insurance groups. Across India, Canada, the United States, and Australia.
-        </p>
-        <p class="body-md" style="margin-top:1rem">
-          When we design your digital presence, we're not guessing what "great" looks like. We've built it at enterprise scale. We bring that same depth of thinking — the product strategy, the UX rigour, the positioning intelligence — to every client we work with, regardless of size.
-        </p>
-        <div class="who-domains" style="margin-top:1.75rem">
-          <span class="wd-tag">Apple</span>
-          <span class="wd-tag">Google</span>
-          <span class="wd-tag">American Airlines</span>
-          <span class="wd-tag">Fortune 50 Finance</span>
-          <span class="wd-tag">Insurance &amp; Fintech</span>
-          <span class="wd-tag">Audit &amp; Compliance</span>
-          <span class="wd-tag">AI &amp; Enterprise Software</span>
-          <span class="wd-tag">India · Canada · United States · Australia</span>
-        </div>
-      </div>
-
-      <!-- Right: credentials -->
-      <div class="reveal">
-        <div class="cred-list">
-          <div class="cred-item">
-            <div class="cred-num">10+</div>
-            <div>
-              <div class="cred-title">Years in software, design &amp; product</div>
-              <div class="cred-sub">Designing and shipping digital products at enterprise scale — not just as consultants, but as the people responsible for the outcome.</div>
-            </div>
-          </div>
-          <div class="cred-item">
-            <div class="cred-num o">F50</div>
-            <div>
-              <div class="cred-title">Fortune 50 company exposure</div>
-              <div class="cred-sub">Products we've built and positioned have been used by millions of people inside and around some of the largest companies in the world.</div>
-            </div>
-          </div>
-          <div class="cred-item">
-            <div class="cred-num o">∞</div>
-            <div>
-              <div class="cred-title">Enterprise &amp; Fortune 50 client exposure</div>
-              <div class="cred-sub">Built and positioned products used across Apple, Google, American Airlines, Fortune 50 financial institutions, global audit firms, and major insurance groups — across multiple continents.</div>
-            </div>
-          </div>
-          <div class="cred-item">
-            <div class="cred-num t" style="min-width:58px;display:flex;align-items:flex-start;padding-top:4px">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
-            </div>
-            <div>
-              <div class="cred-title">India, Canada, United States &amp; Australia</div>
-              <div class="cred-sub">Worked across cultures, regulatory environments, and customer expectations across four markets. We know how a brand lands differently — and we design for the one that matters to you.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1108,7 +1256,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
     <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto">
       <div class="label" style="margin-bottom:0.75rem">What we deliver</div>
       <h2 class="display-lg">Every service you need to <em class="g-em">launch online</em> and <em class="o-em">own your market.</em></h2>
-      <p class="body-lg" style="margin-top:1rem">One agency, every touchpoint — built around your business, not a generic playbook.</p>
+      <p class="body-lg" style="margin-top:1rem">One agency, every touchpoint. Built around your business, not a generic playbook.</p>
     </div>
 
     <div class="svc-list">
@@ -1120,7 +1268,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A9068" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
           </div>
           <div class="svc-row-title">Website Design &amp; Deployment</div>
-          <div class="svc-row-body">Designed from scratch around your brand, your customers, and your goals. Fast, beautiful, and conversion-focused — deployed and live within days, responsive across every device.</div>
+          <div class="svc-row-body">Designed from scratch around your brand, your customers, and your goals. Fast, beautiful, and conversion-focused, deployed and live within days, responsive across every device.</div>
         </div>
         <span class="svc-row-tag">design · dev · deploy</span>
       </div>
@@ -1132,7 +1280,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4724A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </div>
           <div class="svc-row-title">Digital Marketing</div>
-          <div class="svc-row-body">Instagram content strategies, paid social ad campaigns, and audience targeting — dialled in for real businesses, not enterprise budgets.</div>
+          <div class="svc-row-body">Instagram content strategies, paid social ad campaigns, and audience targeting, dialled in for real businesses, not enterprise budgets.</div>
         </div>
         <span class="svc-row-tag o">instagram · ads · reach</span>
       </div>
@@ -1144,7 +1292,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A9068" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <div class="svc-row-title">Search Engine Optimisation</div>
-          <div class="svc-row-body">Keyword research, on-page SEO, technical audits, and content optimisation — built to rank you on Google and bring organic traffic that compounds over time.</div>
+          <div class="svc-row-body">Keyword research, on-page SEO, technical audits, and content optimisation, built to rank you on Google and bring organic traffic that compounds over time.</div>
         </div>
         <span class="svc-row-tag">on-page · technical · content</span>
       </div>
@@ -1168,7 +1316,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4724A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           </div>
           <div class="svc-row-title">Analytics &amp; Branding</div>
-          <div class="svc-row-body">GA4 setup, conversion tracking, heatmaps, and monthly performance reports. Paired with brand identity work — logos, colour systems, and visual language that sticks.</div>
+          <div class="svc-row-body">GA4 setup, conversion tracking, heatmaps, and monthly performance reports. Paired with brand identity work: logos, colour systems, and visual language that sticks.</div>
         </div>
         <span class="svc-row-tag o">analytics · brand · identity</span>
       </div>
@@ -1180,7 +1328,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A9068" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
           <div class="svc-row-title">Business Growth Solutions</div>
-          <div class="svc-row-body">We consult on your customer acquisition funnel, pricing presentation, and competitive positioning — so every rupee spent online works harder.</div>
+          <div class="svc-row-body">We consult on your customer acquisition funnel, pricing presentation, and competitive positioning, so every rupee spent online works harder.</div>
         </div>
         <span class="svc-row-tag">growth · funnel · consulting</span>
       </div>
@@ -1205,7 +1353,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
       <div class="how-step reveal">
         <div class="how-num">02</div>
         <div class="how-title">Proposal &amp; Scope</div>
-        <div class="how-body">A clear, itemised proposal lands in your inbox — tier, timeline, deliverables, price. No surprises.</div>
+        <div class="how-body">A clear, itemised proposal lands in your inbox: tier, timeline, deliverables, price. No surprises.</div>
       </div>
       <div class="how-step reveal">
         <div class="how-num">03</div>
@@ -1228,7 +1376,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
     <div class="reveal" style="max-width:720px;margin-bottom:3.5rem">
       <div class="label" style="margin-bottom:0.75rem">The honest truth</div>
       <h2 class="display-lg">Easy to build.<br/><em class="o-em">That's not the same as working.</em></h2>
-      <p class="body-lg" style="margin-top:1rem">Platforms like Wix, WordPress, Shopify, and Squarespace exist. What we do is different — built exclusively around your business, not assembled from someone else's defaults.</p>
+      <p class="body-lg" style="margin-top:1rem">Platforms like Wix, WordPress, Shopify, and Squarespace exist. What we do is different, built exclusively around your business, not assembled from someone else's defaults.</p>
     </div>
 
     <!-- Problem rows -->
@@ -1239,7 +1387,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           <span class="tpl-counter">01</span>
           <span class="tpl-title">Easy for the builder is not easy for your customer</span>
         </div>
-        <div class="tpl-row-body">Drag-and-drop builders are designed so <em>you</em> can assemble a site in an afternoon. But the result — slow load times, bloated HTML, cookie-cutter layouts — makes it harder for your customers to find you, trust you, and convert. The ease of creation costs your visitors their experience.</div>
+        <div class="tpl-row-body">Drag-and-drop builders are designed so <em>you</em> can assemble a site in an afternoon. But the result: slow load times, bloated HTML, cookie-cutter layouts, makes it harder for your customers to find you, trust you, and convert. The ease of creation costs your visitors their experience.</div>
       </div>
 
       <div class="tpl-row">
@@ -1247,7 +1395,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           <span class="tpl-counter">02</span>
           <span class="tpl-title">Built for everyone means optimised for no one</span>
         </div>
-        <div class="tpl-row-body">A template is a design compromise built to satisfy the broadest possible audience. Your colours get dropped in, your logo replaces theirs — but the structure, the typography hierarchy, the whitespace, the conversion path? Still someone else's. Your brand deserves a foundation built around how <em>your</em> customers think and behave.</div>
+        <div class="tpl-row-body">A template is a design compromise built to satisfy the broadest possible audience. Your colours get dropped in, your logo replaces theirs. The structure, the typography hierarchy, the whitespace, the conversion path? Still someone else's. Your brand deserves a foundation built around how <em>your</em> customers think and behave.</div>
       </div>
 
       <div class="tpl-row">
@@ -1255,7 +1403,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           <span class="tpl-counter">03</span>
           <span class="tpl-title">You pay for convenience with your rankings</span>
         </div>
-        <div class="tpl-row-body">Template platforms ship with bloated JavaScript, render-blocking assets, and generic HTML structures that Google's crawlers struggle to interpret. Core Web Vitals suffer. Keyword authority dilutes. LLM search engines like ChatGPT and Perplexity can't find you. Clean, purpose-built code isn't a luxury — it's the foundation of discoverability.</div>
+        <div class="tpl-row-body">Template platforms ship with bloated JavaScript, render-blocking assets, and generic HTML structures that Google's crawlers struggle to interpret. Core Web Vitals suffer. Keyword authority dilutes. LLM search engines like ChatGPT and Perplexity can't find you. Clean, purpose-built code isn't a luxury. It's the foundation of discoverability.</div>
       </div>
 
       <div class="tpl-row">
@@ -1271,7 +1419,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           <span class="tpl-counter">05</span>
           <span class="tpl-title">Apple doesn't use a drag-and-drop builder. Neither should you.</span>
         </div>
-        <div class="tpl-row-body">Every brand we've worked with at scale — from Fortune 50 enterprises to global product companies — has custom-built digital infrastructure. The ambition of your brand determines the quality of what you build. If you want to compete seriously in your market, your online presence needs to be built seriously, not assembled from defaults.</div>
+        <div class="tpl-row-body">Every brand we've worked with at scale, from Fortune 50 enterprises to global product companies, has custom-built digital infrastructure. The ambition of your brand determines the quality of what you build. If you want to compete seriously in your market, your online presence needs to be built seriously, not assembled from defaults.</div>
       </div>
 
     </div>
@@ -1288,7 +1436,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <li>Generic layouts shared across thousands of sites</li>
             <li>Bloated CSS/JS slowing your Core Web Vitals</li>
             <li>SEO as an afterthought, not a foundation</li>
-            <li>Mobile bolt-on — never mobile-first</li>
+            <li>Mobile bolt-on, never mobile-first</li>
             <li>Your brand colour on someone else's structure</li>
             <li>You're locked into a platform's roadmap &amp; pricing</li>
           </ul>
@@ -1303,7 +1451,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <li>Lean, fast, hand-crafted code built for Core Web Vitals</li>
             <li>SEO and LLM SEO baked in from line one</li>
             <li>Mobile-first, thumb-friendly, every screen size</li>
-            <li>Your positioning, your colours, your voice — entirely yours</li>
+            <li>Your positioning, your colours, your voice: entirely yours</li>
             <li>You own the output. No platform lock-in.</li>
           </ul>
         </div>
@@ -1319,7 +1467,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
     <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto">
       <div class="label" style="margin-bottom:0.75rem">Transparent pricing</div>
       <h2 class="display-lg">Two plans. <em class="o-em">One clear choice.</em></h2>
-      <p class="body-lg" style="margin-top:1rem">Both plans are fully custom — designed around your brand, your market, your customers. Pick the depth of what we build together.</p>
+      <p class="body-lg" style="margin-top:1rem">Both plans are fully custom, designed around your brand, your market, your customers. Pick the depth of what we build together.</p>
     </div>
 
     <div class="pricing-grid reveal">
@@ -1333,14 +1481,14 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           <span class="price-inr">₹69K</span>
           <span class="price-unit">one-time</span>
         </div>
-        <p class="price-sub">Custom-designed around your brand from day one. Fast, beautiful, and built to be found — for businesses ready to establish a strong online presence.</p>
+        <p class="price-sub">Custom-designed around your brand from day one. Fast, beautiful, and built to be found. For businesses ready to establish a strong online presence.</p>
         <div class="price-divider"></div>
         <div class="price-features">
-          <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Fully custom design — built around your brand &amp; colours</div>
-          <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Up to 4 pages — homepage, about, services &amp; contact</div>
+          <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Fully custom design, built around your brand &amp; colours</div>
+          <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Up to 4 pages: homepage, about, services &amp; contact</div>
           <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Responsive across all devices &amp; screen sizes</div>
           <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Enquiry forms, social media integration, basic blog</div>
-          <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>On-page SEO — titles, metadata, schema markup</div>
+          <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>On-page SEO: titles, metadata, schema markup</div>
           <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Google Search Console &amp; GA4 connected</div>
           <div class="pf"><div class="pf-check g"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>2 revision rounds · standard support (24–48h)</div>
           <div class="pf-nudge">
@@ -1364,14 +1512,14 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
           <span class="price-inr" style="color:var(--orange)">₹99K</span>
           <span class="price-unit">one-time</span>
         </div>
-        <p class="price-sub">For businesses that want to dominate — not just show up. Everything in Digital Launch, plus LLM SEO, advanced analytics, and a growth engine that compounds over time.</p>
+        <p class="price-sub">For businesses that want to dominate. Not just show up. Everything in Digital Launch, plus LLM SEO, advanced analytics, and a growth engine that compounds over time.</p>
         <div class="price-divider"></div>
         <div class="price-features">
           <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Everything in Digital Launch, plus:</div>
-          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Unlimited pages — as deep as your business needs</div>
-          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Advanced SEO — keyword research, content strategy &amp; monitoring</div>
-          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>LLM SEO — structured to appear in ChatGPT, Perplexity &amp; Gemini</div>
-          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Performance optimisation — Core Web Vitals &amp; load speed</div>
+          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Unlimited pages, as deep as your business needs</div>
+          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Advanced SEO: keyword research, content strategy &amp; monitoring</div>
+          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>LLM SEO: structured to appear in ChatGPT, Perplexity &amp; Gemini</div>
+          <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Performance optimisation: Core Web Vitals &amp; load speed</div>
           <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>3 months of monthly performance reports <em style="font-style:normal;color:var(--orange)">(included)</em></div>
           <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Dedicated support (4–12h) · 3 revision rounds</div>
           <div class="pf"><div class="pf-check o"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>Quarterly strategy check-in for 6 months post-launch</div>
@@ -1389,13 +1537,13 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
     <div class="addons-strip reveal">
       <div class="addons-header">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        <span class="addons-label">Monthly Add-ons — subscribe anytime</span>
+        <span class="addons-label">Monthly Add-ons, subscribe anytime</span>
       </div>
       <div class="addons-rows">
         <div class="addon-row">
           <div class="addon-row-left">
             <div class="addon-name">Performance Reports</div>
-            <div class="addon-desc">Monthly dashboard — traffic, rankings, conversions, and growth insights delivered to your inbox.</div>
+            <div class="addon-desc">Monthly dashboard: traffic, rankings, conversions, and growth insights delivered to your inbox.</div>
           </div>
           <div class="addon-price">₹2,999 / mo</div>
         </div>
@@ -1421,7 +1569,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
       <div class="beyond-left">
         <div class="beyond-label">Need more?</div>
         <div class="beyond-title">We build beyond the website too.</div>
-        <p class="beyond-body">E-commerce stores, customer portals, booking systems, dealer or partner management platforms — if your business needs a digital product, not just a presence, we scope and build it as a separate engagement, priced to what you actually need.</p>
+        <p class="beyond-body">E-commerce stores, customer portals, booking systems, dealer or partner management platforms. If your business needs a digital product, not just a presence, we scope and build it as a separate engagement, priced to what you actually need.</p>
         <div class="beyond-tags">
           <span class="beyond-tag">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.95-1.57L23 6H6"/></svg>
@@ -1452,6 +1600,77 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
   </div>
 </section>
 
+<!-- ══ WHO WE ARE ══ -->
+<section class="section" id="team" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="who-grid">
+
+      <!-- Left: the claim -->
+      <div class="reveal">
+        <div class="label" style="margin-bottom:1rem">Who we are</div>
+        <h2 class="display-lg">
+          We've built inside<br/>
+          Fortune 50 companies.<br/>
+          <em class="g-em">Now we build for yours.</em>
+        </h2>
+        <p class="body-lg" style="margin-top:1.5rem">
+          Our team carries over a decade of hands-on experience in software product design, technology, and market positioning, earned inside and alongside some of the world's most demanding organisations. Apple. Google. American Airlines. Fortune 50 financial institutions. Global audit and insurance groups. Across India, Canada, the United States, and Australia.
+        </p>
+        <p class="body-md" style="margin-top:1rem">
+          When we design your digital presence, we're not guessing what "great" looks like. We've built it at enterprise scale. We bring that same depth of thinking: the product strategy, the UX rigour, the positioning intelligence, to every client we work with, regardless of size.
+        </p>
+        <div class="who-domains" style="margin-top:1.75rem">
+          <span class="wd-tag">Apple</span>
+          <span class="wd-tag">Google</span>
+          <span class="wd-tag">American Airlines</span>
+          <span class="wd-tag">Fortune 50 Finance</span>
+          <span class="wd-tag">Insurance &amp; Fintech</span>
+          <span class="wd-tag">Audit &amp; Compliance</span>
+          <span class="wd-tag">AI &amp; Enterprise Software</span>
+          <span class="wd-tag">India · Canada · United States · Australia</span>
+        </div>
+      </div>
+
+      <!-- Right: credentials -->
+      <div class="reveal">
+        <div class="cred-list">
+          <div class="cred-item">
+            <div class="cred-num">10+</div>
+            <div>
+              <div class="cred-title">Years in software, design &amp; product</div>
+              <div class="cred-sub">Designing and shipping digital products at enterprise scale, not just as consultants, but as the people responsible for the outcome.</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-num o">F50</div>
+            <div>
+              <div class="cred-title">Fortune 50 company exposure</div>
+              <div class="cred-sub">Products we've built and positioned have been used by millions of people inside and around some of the largest companies in the world.</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-num o">∞</div>
+            <div>
+              <div class="cred-title">Enterprise &amp; Fortune 50 client exposure</div>
+              <div class="cred-sub">Built and positioned products used across Apple, Google, American Airlines, Fortune 50 financial institutions, global audit firms, and major insurance groups, across multiple continents.</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-num t" style="min-width:58px;display:flex;align-items:flex-start;padding-top:4px">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            </div>
+            <div>
+              <div class="cred-title">India, Canada, United States &amp; Australia</div>
+              <div class="cred-sub">Worked across cultures, regulatory environments, and customer expectations across four markets. We know how a brand lands differently, and we design for the one that matters to you.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══ WHY US ══ -->
 <section class="section" id="why" style="background:var(--bg-alt);border-top:1px solid var(--border)">
   <div class="container">
@@ -1461,47 +1680,144 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
     </div>
     <div class="why-masonry">
       <div class="why-item reveal sz-xl span-7">
-        <span class="why-num">01 — Speed</span>
+        <span class="why-num">01 · Speed</span>
         <h3 class="why-title">Ship fast,<br/>iterate faster</h3>
         <p class="why-body">Most agencies bill by the month. We measure in days. Your site goes live while competitors are still in discovery.</p>
       </div>
       <div class="why-item reveal sz-md span-5">
-        <span class="why-num">02 — Visibility</span>
+        <span class="why-num">02 · Visibility</span>
         <h3 class="why-title">Built to be found</h3>
         <p class="why-body">SEO isn't an afterthought. Every page ships with structured data, semantic HTML, and the signals search engines and AI assistants reward.</p>
       </div>
       <div class="why-item reveal sz-sm span-4">
-        <span class="why-num">03 — Clarity</span>
+        <span class="why-num">03 · Clarity</span>
         <h3 class="why-title">No jargon, no surprises</h3>
-        <p class="why-body">Flat pricing. Plain English. Every deliverable defined upfront. You always know what you're getting — and what it costs.</p>
+        <p class="why-body">Flat pricing. Plain English. Every deliverable defined upfront. You always know what you're getting, and what it costs.</p>
       </div>
       <div class="why-item reveal sz-lg span-8">
-        <span class="why-num">04 — Future-proof</span>
+        <span class="why-num">04 · Future-proof</span>
         <h3 class="why-title">LLM SEO is the<br/>next frontier</h3>
         <p class="why-body">Google is no longer the only search engine that matters. We structure your content so ChatGPT, Perplexity, and Gemini cite and recommend you.</p>
       </div>
       <div class="why-item reveal sz-md span-5">
-        <span class="why-num">05 — Results</span>
+        <span class="why-num">05 · Results</span>
         <h3 class="why-title">Conversions over aesthetics</h3>
-        <p class="why-body">Beautiful and strategic. Every design decision is tied to a business outcome — more leads, more sales, more trust.</p>
+        <p class="why-body">Beautiful and strategic. Every design decision is tied to a business outcome: more leads, more sales, more trust.</p>
       </div>
       <div class="why-item reveal sz-xl span-7">
-        <span class="why-num">06 — Partnership</span>
+        <span class="why-num">06 · Partnership</span>
         <h3 class="why-title">We grow when<br/>you grow</h3>
-        <p class="why-body">We're a startup too. We price fairly because we want long-term relationships — not one-off invoices.</p>
+        <p class="why-body">We're a startup too. We price fairly because we want long-term relationships, not one-off invoices.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
+<!-- ══ FAQ ══ -->
+<section class="section" id="faq" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
+      <div class="label" style="margin-bottom:0.75rem">Questions &amp; Answers</div>
+      <h2 class="display-lg">Everything you need to <em class="g-em">know before you start.</em></h2>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          How is Yugan Reach different from using a template builder or DIY platform?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">Template builders make it easy to put something online. We make it effective. There's a critical difference between a website that exists and one that performs: converting visitors, ranking on Google, being recommended by AI search tools, and genuinely reflecting your brand. We build the latter. Every design decision is driven by your market, your customers, and your positioning — not a platform's default components.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          How long does a website project take?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">Most Digital Launch (₹69K) projects go live within 3–5 working days after we complete the discovery call and you approve the proposal. Market Authority (₹99K) engagements typically take 7–12 working days depending on scope. We move fast without cutting corners. We share previews throughout so there are no surprises at the end.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What exactly is included in the ₹69K Digital Launch plan?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">The Digital Launch plan includes a fully custom-designed website (up to 4 pages: homepage, about, services, and contact), responsive across all devices, with on-page SEO, contact form, Google Analytics setup, and two rounds of revisions. Everything is built around your brand: colours, typography, copy tone. Not a template with your name swapped in. Domain registration and hosting are billed separately at cost.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Domain and hosting: how does that work?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">We handle the setup and configuration of your domain and hosting on your behalf, but those costs are passed through to you at cost, no markup. Annual renewal is also your cost. We recommend platforms suited to your project and scale, and you retain full ownership and control of your domain and hosting accounts.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Do you work with completely new businesses, or only established ones?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">Both. If you're launching a new business, we help you establish a digital presence from day one that positions you correctly in your market. If you're an established business going digital or refreshing an outdated site, we audit what exists, understand where you want to go, and build accordingly. The discovery process is the same: we start with your market, not a template.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What is LLM SEO and why does it matter?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">When someone types "best digital agency in Chennai" into ChatGPT, Perplexity, or Google's AI Overviews, the results don't come from a keyword match. They come from how well your content is structured, authoritative, and cited across the web. LLM SEO is the practice of optimising your content and brand signals so that AI assistants recommend you, not just search engine crawlers. It's the next frontier of discoverability, and we include it in the Market Authority plan.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Can I add e-commerce to my website?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">Yes, but e-commerce, customer portals, booking platforms, and custom management systems are scoped as separate engagements. The complexity varies significantly by requirement — product count, payment integrations, inventory logic — so we scope these carefully and price them to match what you actually need, not a bundled tier. Talk to us and we'll give you a clear scope and quote.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Do you work with businesses outside India?
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-body"><div class="faq-body-inner">Yes. Our team has worked across India, Canada, the United States, and Australia, across different regulatory environments, cultures, and customer expectations. We're equally comfortable building for a local Indian market or helping a business in Toronto or Sydney establish their digital presence. We know how brands land differently across markets, and we design accordingly.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="section" style="padding:5rem 0">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="cta-inner">
+        <div class="badge" style="margin:0 auto 1.5rem;width:fit-content"><span class="dot"></span>&nbsp;Accepting new projects · 2026</div>
+        <h2 class="display-lg" style="max-width:760px;margin:0 auto">Your business is ready to go online. <em class="g-em">Let's do it right —</em> end-to-end.</h2>
+        <p class="body-lg" style="margin:1.5rem auto 2.5rem;max-width:580px">
+          New business or established company going digital? We handle the full launch. We learn your market, build your presence exclusively around your brand, and make sure the right customers find you on every platform they use.
+        </p>
+        <div class="btn-group" style="justify-content:center">
+          <a href="#contact" class="btn btn-primary">Start the conversation →</a>
+          <a href="#approach" class="btn btn-secondary">Our approach</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ --><!-- ══ CONTACT ══ -->
 <section class="section" id="contact">
   <div class="container">
     <div class="contact-wrap">
       <div class="contact-left reveal">
         <div class="label" style="margin-bottom:0.75rem">Get in touch</div>
         <h2 class="display-lg">Let's build something <em class="g-em">worth finding.</em></h2>
-        <p class="body-lg" style="margin-top:1.25rem">Tell us about your business and what you're trying to achieve. We'll get back within 24 hours — with thoughts, not a boilerplate pitch.</p>
+        <p class="body-lg" style="margin-top:1.25rem">Tell us about your business and what you're trying to achieve. We'll get back within 24 hours. Thoughts, not a boilerplate pitch.</p>
         <div class="contact-list">
           <div class="contact-item">
             <div class="ci-icon">
@@ -1599,104 +1915,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
   </div>
 </section>
 
-<!-- ══ FAQ ══ -->
-<section class="section" id="faq" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="container">
-    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
-      <div class="label" style="margin-bottom:0.75rem">Questions &amp; Answers</div>
-      <h2 class="display-lg">Everything you need to <em class="g-em">know before you start.</em></h2>
-    </div>
 
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          How is Yugan Reach different from using a template builder or DIY platform?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">Template builders make it easy to put something online. We make it effective. There's a critical difference between a website that exists and one that performs — converting visitors, ranking on Google, being recommended by AI search tools, and genuinely reflecting your brand. We build the latter. Every design decision is driven by your market, your customers, and your positioning — not a platform's default components.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          How long does a website project take?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">Most Digital Launch (₹69K) projects go live within 3–5 working days after we complete the discovery call and you approve the proposal. Market Authority (₹99K) engagements typically take 7–12 working days depending on scope. We move fast without cutting corners — and we share previews throughout so there are no surprises at the end.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          What exactly is included in the ₹69K Digital Launch plan?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">The Digital Launch plan includes a fully custom-designed website (up to 4 pages — homepage, about, services, and contact), responsive across all devices, with on-page SEO, contact form, Google Analytics setup, and two rounds of revisions. Everything is built around your brand — colours, typography, copy tone. Not a template with your name swapped in. Domain registration and hosting are billed separately at cost.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          Domain and hosting — how does that work?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">We handle the setup and configuration of your domain and hosting on your behalf, but those costs are passed through to you at cost — no markup. Annual renewal is also your cost. We recommend platforms suited to your project and scale, and you retain full ownership and control of your domain and hosting accounts.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          Do you work with completely new businesses, or only established ones?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">Both. If you're launching a new business, we help you establish a digital presence from day one that positions you correctly in your market. If you're an established business going digital or refreshing an outdated site, we audit what exists, understand where you want to go, and build accordingly. The discovery process is the same — we start with your market, not a template.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          What is LLM SEO and why does it matter?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">When someone types "best digital agency in Chennai" into ChatGPT, Perplexity, or Google's AI Overviews, the results don't come from a keyword match — they come from how well your content is structured, authoritative, and cited across the web. LLM SEO is the practice of optimising your content and brand signals so that AI assistants recommend you, not just search engine crawlers. It's the next frontier of discoverability, and we include it in the Market Authority plan.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          Can I add e-commerce to my website?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">Yes — but e-commerce, customer portals, booking platforms, and custom management systems are scoped as separate engagements. The complexity varies significantly by requirement — product count, payment integrations, inventory logic — so we scope these carefully and price them to match what you actually need, not a bundled tier. Talk to us and we'll give you a clear scope and quote.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
-          Do you work with businesses outside India?
-          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-body"><div class="faq-body-inner">Yes. Our team has worked across India, Canada, the United States, and Australia — across different regulatory environments, cultures, and customer expectations. We're equally comfortable building for a local Indian market or helping a business in Toronto or Sydney establish their digital presence. We know how brands land differently across markets, and we design accordingly.</div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA ══ -->
-<section class="section" style="padding:5rem 0">
-  <div class="container">
-    <div class="cta-box reveal">
-      <div class="cta-inner">
-        <div class="badge" style="margin:0 auto 1.5rem;width:fit-content"><span class="dot"></span>&nbsp;Accepting new projects · 2026</div>
-        <h2 class="display-lg" style="max-width:760px;margin:0 auto">Your business is ready to go online. <em class="g-em">Let's do it right —</em> end-to-end.</h2>
-        <p class="body-lg" style="margin:1.5rem auto 2.5rem;max-width:580px">
-          New business or established company going digital — we handle the full launch. We learn your market, build your presence exclusively around your brand, and make sure the right customers find you on every platform they use.
-        </p>
-        <div class="btn-group" style="justify-content:center">
-          <a href="#contact" class="btn btn-primary">Start the conversation →</a>
-          <a href="#approach" class="btn btn-secondary">Our approach</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -1708,7 +1927,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
             <span class="nav-logo-tagline">Digital Solutions</span>
           </div>
         </a>
-        <p class="body-md" style="max-width:280px;margin-top:0.75rem;font-size:0.875rem">End-to-end digital launch for businesses — new or established. Built exclusively around your brand, your market, and your customers.</p>
+        <p class="body-md" style="max-width:280px;margin-top:0.75rem;font-size:0.875rem">End-to-end digital launch for businesses. new or established. Built exclusively around your brand, your market, and your customers.</p>
       </div>
       <div>
         <div class="footer-col-title">Services</div>
@@ -1743,7 +1962,7 @@ footer{padding:4rem 0 2.5rem;border-top:1px solid var(--border);margin-top:2rem;
       <div><a href="mailto:yuganreach@gmail.com">yuganreach@gmail.com</a></div>
     </div>
     <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:0.72rem;color:var(--text-muted);line-height:1.65;font-family:var(--font-mono)">
-      All third-party brand names, trademarks, and logos mentioned on this site — including but not limited to Apple, Google, and American Airlines — are the property of their respective owners. Yugan Reach Digital Solutions is not affiliated with, endorsed by, or sponsored by any of these companies. References are solely for the purpose of describing the professional background and industry experience of our team members. Views expressed on this site regarding digital strategy, platform choices, and marketing approaches represent the editorial opinions of Yugan Reach Digital Solutions and are not stated as verified facts.
+      All third-party brand names, trademarks, and logos mentioned on this site, including but not limited to Apple, Google, and American Airlines — are the property of their respective owners. Yugan Reach Digital Solutions is not affiliated with, endorsed by, or sponsored by any of these companies. References are solely for the purpose of describing the professional background and industry experience of our team members. Views expressed on this site regarding digital strategy, platform choices, and marketing approaches represent the editorial opinions of Yugan Reach Digital Solutions and are not stated as verified facts.
     </div>
   </div>
 </footer>
@@ -1784,11 +2003,51 @@ document.getElementById('mobileNav').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeMobileNav();
 });
 
-// ── Scroll reveal ──
+// ── Scroll reveal with stagger ──
 const io = new IntersectionObserver(entries => {
-  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-}, { threshold: 0.1 });
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      // stagger siblings within the same parent
+      const siblings = [...en.target.parentElement.querySelectorAll('.reveal:not(.in)')];
+      const idx = siblings.indexOf(en.target);
+      en.target.style.transitionDelay = `${idx * 75}ms`;
+      en.target.classList.add('in');
+      io.unobserve(en.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ── Stat count-up ──
+function countUp(el, raw, duration = 1600) {
+  const isINR = raw.startsWith('₹');
+  const hasK  = raw.includes('K');
+  const hasPct = raw.includes('%');
+  const num = parseFloat(raw.replace(/[₹K%]/g, ''));
+  const start = performance.now();
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const cur = Math.round(num * eased);
+    el.textContent = (isINR ? '₹' : '') + cur + (hasK ? 'K' : '') + (hasPct ? '%' : '');
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = raw;
+  }
+  requestAnimationFrame(tick);
+}
+const statIO = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      const raw = en.target.dataset.val;
+      if (raw) countUp(en.target, raw);
+      statIO.unobserve(en.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach(el => {
+  el.dataset.val = el.textContent.trim();
+  statIO.observe(el);
+});
 
 // ── Subtle orb parallax ──
 const orbs = document.querySelectorAll('.hero-orb');
@@ -1802,67 +2061,78 @@ window.addEventListener('mousemove', e => {
 const INTERVAL = 4000;
 const tabs = document.querySelectorAll('.dw-tab');
 const panels = document.querySelectorAll('.dw-panel');
+const dotNavs = document.querySelectorAll('.dw-dot-nav');
 const progBar = document.getElementById('dw-prog');
 const chromeUrl = document.querySelector('.dw-chrome-url');
 
 const urlMap = [
   'google.com/search?q=best+digital+agency+India',
   'chat.openai.com · AI Search',
-  'instagram.com/explore · @yuganreach'
+  'social · discover your business'
 ];
 
 let current = 0;
 let timer = null;
-let progTimer = null;
 let paused = false;
 
 function goTo(idx) {
-  tabs[current].classList.remove('active');
   panels[current].classList.remove('active');
+  tabs[current]?.classList.remove('active');
+  dotNavs[current]?.classList.remove('active');
   current = idx;
-  tabs[current].classList.add('active');
   panels[current].classList.add('active');
-  chromeUrl.textContent = urlMap[current];
+  tabs[current]?.classList.add('active');
+  dotNavs[current]?.classList.add('active');
+  if (chromeUrl) chromeUrl.textContent = urlMap[current];
   resetProgress();
 }
 
 function resetProgress() {
   progBar.style.transition = 'none';
   progBar.style.width = '0%';
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      progBar.style.transition = `width ${INTERVAL}ms linear`;
-      progBar.style.width = '100%';
-    });
-  });
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    progBar.style.transition = `width ${INTERVAL}ms linear`;
+    progBar.style.width = '100%';
+  }));
 }
 
 function startCycle() {
   clearInterval(timer);
   timer = setInterval(() => {
-    if (!paused) goTo((current + 1) % tabs.length);
+    if (!paused) goTo((current + 1) % panels.length);
   }, INTERVAL);
 }
 
-// Tab click
+// Desktop tab clicks
 tabs.forEach((tab, i) => {
-  tab.addEventListener('click', () => {
-    goTo(i);
-    clearInterval(timer);
-    startCycle();
-  });
+  tab.addEventListener('click', () => { goTo(i); clearInterval(timer); startCycle(); });
 });
 
-// Pause on hover
-const widget = document.querySelector('.dw-card');
-widget.addEventListener('mouseenter', () => { paused = true; progBar.style.animationPlayState = 'paused'; });
-widget.addEventListener('mouseleave', () => {
-  paused = false;
-  resetProgress();
+// Mobile dot clicks
+dotNavs.forEach((dot, i) => {
+  dot.addEventListener('click', () => { goTo(i); clearInterval(timer); startCycle(); });
 });
+
+// Touch swipe
+let touchX = 0;
+const widget = document.querySelector('.dw-card');
+widget.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+widget.addEventListener('touchend', e => {
+  const diff = touchX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) {
+    const next = diff > 0
+      ? (current + 1) % panels.length
+      : (current - 1 + panels.length) % panels.length;
+    goTo(next); clearInterval(timer); startCycle();
+  }
+}, { passive: true });
+
+// Pause on hover (desktop)
+widget.addEventListener('mouseenter', () => { paused = true; });
+widget.addEventListener('mouseleave', () => { paused = false; resetProgress(); });
 
 // Init
-chromeUrl.textContent = urlMap[0];
+if (chromeUrl) chromeUrl.textContent = urlMap[0];
 resetProgress();
 startCycle();
 
